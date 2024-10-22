@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce project </title> 
+    <!--Bootstrap css cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./home.css">
+    <style>
+      :root {
+  --bg1: #92ef06;
+  --bg2: #243071;
+  --bg3:  #1c286d;
+  --body: #959DCC;
+  --brand: #381d47;
+  --white: #fff;
+
+}
+
+
+ 
+    </style>
+</head>
+<body  style="background-color: var(--bg2);">
+  <!--Header Section-->
+  <header> 
+       <div >
+        <nav class="navbar navbar-expand-md navbar-light fixed-top mb-3" style="background-color: var(--bg3)">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white m-4" href="#Home">Top Tune</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item">
+                      <a class="nav-link  fs-5 text-white " href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link  fs-5 text-white" href="#Artist">Artist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link  fs-5 text-white" href="#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Contact Us" class="nav-link  fs-5 text-white">Contact us</a>
+                    </li>
+                  </ul>
+                  <div class="col-md-3 text-end m-3 p-2">
+
+                    <button type="button" class="btn btn-outline-primary text-white" data-bs-toggle="modal" data-bs-target="#loginModal">
+                      Log-In
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+                      Sign-Up
+                    </button>
+                  </div>
+                </div>
+              </div>
+        </nav>
+    </div>
+  </header>
+
+  <!--Log In Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel text-dark">Login to Top Tune</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3 ">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3 ">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Log-In</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Sign Up Modal-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" class="text-dark" id="exampleModalLabel">Get Top Tune</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3 text-dark">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mb-3 text-dark">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" required>
+          </div>
+          <div class="mb-3 text-dark">
+            <label for="cexampleInputPassword1" class="form-label"> Confirm Password</label>
+            <input type="password" class="form-control" id="cexampleInputPassword1" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--Carousel Section Section-->
+  
+   <section id="Home" >
+    <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./wallpaper.jpg" class="d-block w-100" alt="..." width="100%" height="700px">
+          <div class="carousel-caption d-none d-md-block">
+            <button class="bg-info p-2 m-3">Listen Music</button>
+            <p>Listen Music with friends.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./Wallpaper2.jpeg" class="d-block w-100" alt="..." width="100%" height="700px">
+          <div class="carousel-caption d-none d-md-block">
+            <button class="bg-info p-2 m-3">Listen Music</button>
+            <p>Listen Music with friends.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./wallpaper3.jpeg" class="d-block w-100" alt="..." width="100%" height="700px">
+          <div class="carousel-caption d-none d-md-block">
+            <button class="bg-info p-2 m-3">Listen Music</button>
+            <p>Listen Music with friends.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+  <!--/Main-->
+
+  <!--Artistt Name-->
+  
+  <section id="Artist">
+    <p class="h2 text-center text-white m-4 p-2">Artists</p>
+    <div class="container">
+      <div class="row">  
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);" >
+            <div class="card-header  m-2 p-2 btn btn-outline-info">A.R. RAHMAN</div>
+            <div class="card-img"><img src="./AR.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body"> A.R. RAHMAN Songs</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./arrrahman.html" class="text-white fs-5">Click here</a></button></div>
+          </div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">ARIJIT SINGH</div>
+            <div class="card-img"><img src="./arijit singh.jpg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">ARIJIT SINGH</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./arijit.html" class="text-white fs-5">Click here</a></button></div>
+          </div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">DILJIT DOSANJH</div>
+            <div class="card-img"><img src="./Diljit.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">DILJIT DOSANJH SONGS</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./diljit.html" class="text-white fs-5">Click here</a></button></div>
+          </div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">HONEY SINGH</div>
+            <div class="card-img"><img src="./Honey singh.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">HONEY SINGH SONGS</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./honey.html" class="text-white fs-5">Click here</a></button></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">SHREYA GHOSHAL</div>
+            <div class="card-img"><img src="./shreya.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">SHREYA GHOSHAL SONGS</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./shreya.html" class="text-white fs-5">Click here</a></button></div>
+          </div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">K.K.</div>
+            <div class="card-img"><img src="./KK.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">K.K. SONGS</div>
+            <div class="card-foop-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./kk.html" class="text-white fs-5">Click here</a></button></div></div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header  m-2 p-2 btn btn-outline-info">JUBIN NAUTIYAL</div>
+            <div class="card-img"><img src="./jubin nautiyal.jpeg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">JUBIN NAUTIYAL SONGS</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./jubin.html" class="text-white fs-5">Click here</a></button></div></div>
+          <div class="col m-4 p-3  text-center" style="background-color: var(--brand);">
+            <div class="card-header m-2 p-2 btn btn-outline-info">ARIJIT SINGH</div>
+            <div class="card-img"><img src="./arijit singh.jpg" alt=""  width="250px" height="300px"></div>
+            <div class="card-body">ARIJIT SINGH SONGS</div>
+            <div class="card-footer p-2"><button class="btn btn-outline-primary p-2 m-2"><a href="./arijit.html" class="text-white fs-5" >Click here</a></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!--About-->
+    <section id="About" style="position: relative; ">
+      <div style="content: ''; width: 30%; height: 100%; background-color: #FFAB76; position: absolute; top: 0; left: 0; z-index: -1; margin-left: 10px ; "></div>
+      <div class="container text-white m-3 p-3">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <img src="./about.jpeg" width="400px" height="400px" alt="">
+          </div>
+          <div class="col-lg-4 offset-lg-1">
+            <h6 class="fs-3">About us</h6>
+            <h1>About Top Tune</h1>
+            <p>I think music in itself is healing. It's an explosive expression of humanity. It's something we are all touched by. No matter what culture we're from, everyone loves music  “Music is your own experience, your thoughts, your wisdom. If you don’t live it, it won’t come out of your horn.” — Charlie Parker" </p>
+            <p>“Music does a lot of things for a lot of people. It’s transporting, for sure. It can take you right back, years back, to the very moment certain things happened in your life. It’s uplifting, it’s encouraging, it’s strengthening.” — Aretha Franklin</p>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Contact US-->
+    <footer>
+      <section id="Contact Us">
+        <div class="footer-top">
+          <div class="container text-white">
+            <div class="row ">
+              <div class="col-lg-4">
+                <h1 class="mb-3">Top Tune</h1>
+                <p>One good thing about music, when it hits you, you feel no pain</p>
+                  <div class="social-link">
+                    <a href="#"><i class="ri-facebook-fill"></i></a>
+                    <a href="#"><i class="ri-instagram-fill"></i></a>
+                    <a href="#"><i class="ri-twitter-fill"></i></a>
+                    <a href="#"><i class="ri-google-fill"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-3 offset-lg-1">
+                <h4 class="mb-3">Working hours</h4>
+                <div>
+                  <h6>Daily</h6>
+                  <p>08 am- 09 pm</p>
+                </div>
+                <div>
+                  <h6>Thursday closed</h6>
+                  <p>08 am- 09 pm</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3">
+                <h4>Contact us</h4>
+                <p>
+                  <a href="#"><i class="ri-map-pin-2-fill"></i></a>
+                  <span>2464 Vijay dwar ,east delhi,delhi</span>
+                </p>
+                <p>
+                  <a href="#"><i class="ri-contacts-fill"></i></a>
+                  <span>2464 5231 502</span>
+                </p>
+                <p>
+                  <a href="#"><i class="ri-mail-fill"></i></a>
+                  <span>kgmail@gmail.com</span>
+                </p>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom mt-3 text-white">
+          <div class="container">
+            <div class="row">
+              <div class="col-auto">
+                <p>Copyrights @unique.All Rights Reserved</p>
+              </div>
+              <div class="col-auto">
+                <p>Designed by KG</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </section>
+    </footer>
+    
+
+    <!-- Javascript cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
+</body>
+</html>

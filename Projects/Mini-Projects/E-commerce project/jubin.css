@@ -1,0 +1,31 @@
+body{
+    background-image:  url(./jubin\ nautiyal.jpeg),linear-gradient(rgb(244, 224, 207,0.5), rgb(229, 138, 35,0.5));
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+footer{
+    padding: 160px;
+  
+  }
+  footer .social-link{
+    display: flex;
+  
+  }
+  footer .social-link a{
+    margin-right: 5px;
+  }
+  .footer-top{
+    padding-bottom: 30px;
+  }
+  .footer-bottom{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-top: 1px solid var(--body);
+  }
+
+  .navbar-toggler {
+    background-color: white;
+  }
