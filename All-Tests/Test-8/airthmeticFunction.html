@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+
+    <style>
+        button{
+            background-color: rgb(72, 129, 235);
+            margin: 8px;
+            padding: 8px;
+            font-size: medium;
+
+        }
+    </style>
+</head>
+<body style="text-align: center; display: block; background-color: black; color: aliceblue;">
+
+    <h1>Functions Using Airthmetic operations</h1>
+
+    <button onclick="add(50,25,10)" >Add</button><br>
+    <button onclick="subtract(50,25,10)">Subtract</button><br>
+    <button onclick="multiply(50,25,10)">Multiply</button><br>
+    <button onclick="divide(50,25,10)">Divide</button><br>
+    <button onclick="modulus(50,25)">Modulus</button><br>
+    
+
+
+
+
+
+
+    <script>
+        
+        function add(a,b,c) {
+            alert(`a+b+c = ${a+b+c}`);
+        }
+
+        function subtract(a,b,c) {
+            alert(`a-b-c = ${a-b-c}`);
+        }
+
+        function multiply(a,b,c) {
+            alert(`a*b*c = ${a*b*c}`);
+        }
+
+        function divide(a,b,c) {
+            alert(`a/b/c = ${a/b/c}`);
+        }
+
+        function modulus(a,b) {
+            alert(`a%b = ${a%b}`);
+        }
+
+
+    </script>
+</body>
+</html>
