@@ -1,0 +1,85 @@
+1. What is HTML?
+
+HTML stands for HyperText Markup Language. It is the markup language used to create and design web pages. It structures the webpage content by defining such elements such as headings, paragraphs, images, links, and more. Browsers read HTML files and render them as web pages. HTML works by using tags and it is the building block of the webpage.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Are the HTML tags and elements the same thing?
+No, HTML tags and elements are not the same thing:
+
+HTML Tags: These are the building blocks of HTML webpage. Tags are written between angled brackets (< >). Tags define the beginning and end of an HTML element except some tags such as <img>, <br>, and <input>. For example: <p> (opening tag) and </p> (closing tag).
+
+HTML Elements: An HTML element consists of an opening tag, content, and a closing tag. In some cases, the element can be self-closing (like <img>).
+
+Example of an element:
+
+<p>This is a paragraph.</p>
+In this case, the opening <p> tag, the content "This is a paragraph.", and the closing </p> tag together form an HTML element.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. What are the tags and attributes in HTML?
+
+HTML Tags: Tags are the markup language's keywords or symbols that define the structure and content of the web page. Tags are written between angled brackets (< >). They usually come in pairs, like this is opening tag <h1> and this is closing tag </h1>, but some tags like <img> are self-closing.
+
+Example:
+
+<h1>This is a heading</h1>
+
+HTML Attributes: Attributes provide additional information about HTML elements. They are always included in the opening tag and usually come in key="value" pairs like name="value".
+
+Example:
+
+<img src="image.jpg" alt="An example image" width="200">
+In this example, src, alt, and width are attributes that provide more details about the image element.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4. What are void elements in HTML?
+
+Void elements (also known as self-closing or empty elements) are HTML elements that do not have any content between opening and closing tags, meaning they don’t have a closing tag. They are written as a single tag.
+
+Examples of void elements:
+
+<img>: Used to embed images.
+<br>: Represents a line break.
+<hr>: Represents a thematic break (horizontal rule).
+<input>: Defines an input field for forms.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. What is the feature of HTML?
+
+HTML has several important features:
+
+1. Simple and Easy to Learn: HTML is beginner-friendly, making it easy to create structured web content.
+2. Platform Independent: HTML code can be used on any platform (Windows, Linux, macOS, etc.), and it is interpreted by all web browsers.
+3. Rich Media Support: HTML supports multimedia elements such as images, videos, and audio, making websites more interactive.
+4. Hyperlinking: HTML allows users to link web pages together using <a> (anchor) tags.
+5. Cross-browser Compatibility: HTML is supported by all modern browsers, ensuring web pages look similar across different platforms.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6..Diff between HTML vs XHTML?
+
+Definition:
+   HTML: A markup language for creating web pages with simple, less strict syntax.
+   XHTML: A stricter, XML-based version of HTML designed for better consistency and compatibility with XML parsers.
+Syntax Rules
+   HTML: Syntax is lenient; browsers can interpret malformed code.
+   XHTML: Syntax is strict; code must follow proper XML rules (e.g., all tags must be closed, and attributes must be quoted).
+Doctype Declaration
+   HTML: Doctype is optional and less strict (e.g., <!DOCTYPE html> for HTML5).
+   XHTML: Requires a doctype declaration and is strict (e.g., <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">).
+Tag Case Sensitivity
+   HTML: Tags are case-insensitive (<BODY> and <body> are treated the same).
+   XHTML: Tags must be lowercase (<body> only).
+Attribute Handling
+   HTML: Attributes can be written without quotes and may have no value (e.g., checked).
+   XHTML: Attribute values must be quoted (e.g., checked="checked").
