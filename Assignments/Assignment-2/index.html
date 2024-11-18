@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        body{
+            background-color: rgba(31, 31, 31, 0.855);
+            color: rgb(241, 243, 246);
+        }
+        #heading{
+            text-align: center;
+            margin: 4px;
+        }
+        .container{
+            background-color: rgba(193, 214, 37, 0.684);
+            text-align: center;
+            width: 90%;
+            height: auto;
+            border: 2px solid aliceblue ;
+            margin: 10px;
+
+        }
+
+        input{
+            padding: 10px;
+            margin: 10px ;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            color: aliceblue;
+        }
+
+        input:valid{
+            background-color: rgb(11, 177, 177);
+        }
+
+        input:invalid{
+            background-color: rgb(235, 57, 57);
+        }
+
+        button{
+            margin: 5px;
+            padding: 5px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">CREATE A REGISTRATION FORM WITH THE FOLLOWING FIELDS</h1>
+    <div class="container">
+        
+        <h1>Registration Form</h1>
+        <form action="#">
+            <label for="username">UserName:</label>
+            <input type="text" name="username" id="username" required minlength="4" maxlength="10" placeholder="Enter your username"><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" required placeholder="Enter your email : kgf@gmail.com"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required minlength="8" maxlength="20" placeholder="Enter your password"><br>
+
+            <label for="age">Age :</label>
+            <input type="number" name="age" id="age" required min="18" max="100" placeholder="enter your age"><br>
+
+            <label for="zipcode">Zip code :</label>
+            <input type="text" name="zipcode" id="zipcode" required pattern="\d{6}" placeholder="Enter your 6 digit zip code"><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
