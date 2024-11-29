@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #about-content {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Index Page</h1>
+    <p>Click the button below to load the About page content via AJAX.</p>
+    <button id="load-about">Load About Content</button>
+    <div id="about-content"></div>
+
+    <script>
+        document.getElementById('load-about').addEventListener('click', function () {
+            // Create an AJAX request
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'about.html', true);
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Display the about.html content in the div
+                    const contentDiv = document.getElementById('about-content');
+                    contentDiv.innerHTML = xhr.responseText;
+                    contentDiv.style.display = 'block';
+                } else {
+                    alert('Failed to load content');
+                }
+            };
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
