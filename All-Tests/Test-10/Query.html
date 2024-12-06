@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Products by Query</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #searchInput {
+      width: 300px;
+      padding: 8px;
+      margin-right: 10px;
+    }
+    #searchButton {
+      padding: 8px 15px;
+      cursor: pointer;
+    }
+    #productList {
+      margin-top: 20px;
+    }
+    .product-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .product-title {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Products</h1>
+  <input type="text" id="searchInput" placeholder="Enter product query..." />
+  <button id="searchButton">Search</button>
+  <div id="productList"></div>
+
+  <script>
+    async function fetchProducts(query) {
+      const apiUrl = `https://dummyjson.com/products/search?q=${query}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.products; // Return the array of matching products
+      } catch (error) {
+        console.error("Error fetching products:", error.message);
+        return [];
+      }
+    }
+
+    async function searchAndDisplayProducts() {
+      const searchInput = document.getElementById("searchInput").value.trim();
+      const productList = document.getElementById("productList");
+
+      // Clear previous results
+      productList.innerHTML = "";
+
+      if (searchInput === "") {
+        productList.innerHTML = "<p>Please enter a search term.</p>";
+        return;
+      }
+
+      const products = await fetchProducts(searchInput);
+
+      if (products.length === 0) {
+        productList.innerHTML = "<p>No products found.</p>";
+        return;
+      }
+
+      // Display all products in a list of divs
+      products.forEach(product => {
+        const productItem = document.createElement("div");
+        productItem.className = "product-item";
+
+        productItem.innerHTML = `
+          <p class="product-title">${product.title}</p>
+          <p>Price: $${product.price}</p>
+          <p>${product.description}</p>
+          <p>Brand: ${product.brand}</p>
+          <p>Category: ${product.category}</p>
+        `;
+
+        productList.appendChild(productItem);
+      });
+    }
+
+    // Attach event listener to the search button
+    document.getElementById("searchButton").addEventListener("click", searchAndDisplayProducts);
+  </script>
+</body>
+</html>
