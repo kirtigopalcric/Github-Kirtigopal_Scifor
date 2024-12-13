@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulate Array</title>
+</head>
+<body>
+    <script>
+    
+         
+    const myArray = ["toyota", "honda", "bmw"];
+
+
+
+
+        function manipulateArray(inputarr) {
+            inputarr.push("volvo") ;
+
+            for (let i = 0; i < inputarr.length; i++) {
+                inputarr[i] = inputarr[i].toUpperCase();
+
+                
+                
+            }
+            return inputarr ;
+        }
+
+        const result = manipulateArray(myArray);
+        console.log(result);
+        
+    </script>
+</body>
+</html>
