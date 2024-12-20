@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Example</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+<script type="text/babel">
+   function UserData({name, age, email, mob, city}) {
+    return (
+        <div>
+            <div>
+                Name = {name}
+            </div>
+            <div>
+                Age = {age}
+            </div>
+            <div>
+                Email = {email}
+            </div>
+            <div>
+                Mob. No. = {mob}
+            </div>
+            <div>
+                City = {city}
+            </div>
+        </div>
+    );
+}
+
+
+
+function App() {
+  return (
+    <div>
+    <h1>Hello this is function props </h1>
+    <UserData name = {"Karan Sharma"} age = {"23"} email = {"kg123@gmail.com"} mob= {"9562356656"} city = {"Mathura"}/>
+    </div>
+    
+  );
+}
+
+    const container = document.getElementById("root");
+    ReactDOM.render(<App />, container);
+    </script>
+    
+</body>
+</html>
