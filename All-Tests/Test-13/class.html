@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Component</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    class UpdateStateComponent extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          name: 'Kirti Gopal',
+          lname: 'Saraswat',
+          age: 22,
+        };
+      }
+
+      // Method to update state
+      updateProperties = () => {
+        this.setState({
+          name: 'Karan',
+          lname: 'Sharma',
+          age: 23,
+        });
+      };
+
+      render() {
+        return (
+          <div style={{ textAlign: 'center', marginTop: '50px' }}>
+            <h1>Update State</h1>
+            <p><strong>First Name:</strong> {this.state.name}</p>
+            <p><strong>Last Name:</strong> {this.state.lname}</p>
+            <p><strong>Age:</strong> {this.state.age}</p>
+            <button onClick={this.updateProperties} style={{ padding: '10px 20px', fontSize: '16px' }}>
+              Update Properties
+            </button>
+          </div>
+        );
+      }
+    }
+    
+    ReactDOM.render(<UpdateStateComponent />, document.getElementById('root'));
+  </script>
+</body>
+</html>
