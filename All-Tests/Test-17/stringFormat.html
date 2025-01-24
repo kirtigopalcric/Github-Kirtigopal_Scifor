@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #605f5f;
+            color: aliceblue;
+            
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>String Formatter</h1>
+    <form onsubmit="formatString(event)">
+        <label for="inputString">Enter a string:</label>
+        <input type="text" id="inputString" placeholder="Enter your string here" required>
+        <button type="submit">Format String</button>
+    </form>
+
+    <div id="result" class="result" style="display: none;"></div>
+
+    <script>
+        function formatString(event) {
+            // Prevent form from submitting
+            event.preventDefault();
+
+            // Get the input string
+            const inputString = document.getElementById("inputString").value;
+
+            // Perform transformations
+            const uppercaseString = inputString.toUpperCase();
+            const lowercaseString = inputString.toLowerCase();
+            const substring = inputString.slice(2, 6); // Index 2 to 5 (5 is exclusive)
+
+            // Display the results
+            const resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.style.color = "black";
+            resultDiv.innerHTML = `
+                <p><strong>Uppercase:</strong> ${uppercaseString}</p>
+                <p><strong>Lowercase:</strong> ${lowercaseString}</p>
+                <p><strong>Substring (index 2 to 5):</strong> ${substring}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
