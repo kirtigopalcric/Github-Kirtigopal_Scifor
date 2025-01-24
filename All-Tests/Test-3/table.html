@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Table</title>
+    <style>
+        table {
+            width: 100%; /* Make the table take up full width */
+            border-collapse: collapse; 
+            margin-bottom: 20px; /* Add some space below the table */
+        }
+
+        th, td {
+            border: 1px solid #ddd; /* Add borders to cells */
+            padding: 8px; /* Add padding to cells */
+            text-align: left; /* Align text to the left by default */
+        }
+
+        th {
+            background-color: #f2f2f2; 
+            font-weight: bold; 
+        }
+         tr:nth-child(even){background-color: #f2f2f2;}
+    </style>
+</head>
+<body>
+
+    <h2>Basic Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Karan</td>
+                <td>Sharma</td>
+                <td>sharmakaran@34gmail.com</td>
+            </tr>
+            <tr>
+                <td>Devesh</td>
+                <td>Sharma</td>
+                <td>debesh94@gmail.com</td>
+            </tr>
+            <tr>
+                <td>vishnu</td>
+                <td>Narayan</td>
+                <td>narayan80@gmail.com</td>
+            </tr>
+            <tr>
+                <td>kishan</td>
+                <td>Lal</td>
+                <td>kishan67@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+       
+</body>
+</html>
