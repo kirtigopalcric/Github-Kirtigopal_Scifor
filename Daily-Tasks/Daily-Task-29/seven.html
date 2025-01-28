@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle App</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        /* Center the content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #root {
+            text-align: center;
+        }
+        .app {
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        .app.light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .app.dark {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 2rem;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+       const { createContext, useState, useContext } = React;
+
+       // Create ThemeContext
+       const ThemeContext = React.createContext();
+
+       // ThemeProvider component
+       const ThemeProvider = ({ children }) => {
+       const [theme, setTheme] = useState('light');
+
+       const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// ThemeToggle component
+      const ThemeToggle = () => {
+       const { theme, toggleTheme } = useContext(ThemeContext);
+
+ return (
+    <button onClick={toggleTheme}>
+      Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
+    </button>
+  );
+};
+
+// App component
+const App = () => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <div className={`app ${theme}`}>
+      <h1>Theme Toggle App</h1>
+      <ThemeToggle />
+      <p>Current theme: {theme}</p>
+    </div>
+  );
+};
+
+
+// Render the app
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+    </script>
+</body>
+</html>
