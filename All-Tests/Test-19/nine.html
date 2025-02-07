@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO App Using Redux</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.5/react-redux.min.js"></script>
+    <script src="https://unpkg.com/@reduxjs/toolkit@1.9.5/dist/redux-toolkit.umd.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: white;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .login-button,
+        .logout-button {
+            padding: 12px 18px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            margin-top: 10px;
+        }
+
+        .login-button:hover,
+        .logout-button:hover {
+            background: #ee5253;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { createSlice, configureStore } = window.RTK;
+        const { Provider, useSelector, useDispatch } = ReactRedux;
+
+        // Dummy Users
+        const usersDB = [
+            { username: "user1", password: "pass123" },
+            { username: "user2", password: "pass456" }
+        ];
+
+        // Define auth slice
+        const authSlice = createSlice({
+            name: 'auth',
+            initialState: {
+                isAuthenticated: false,
+                user: null,
+                error: null
+            },
+            reducers: {
+                login: (state, action) => {
+                    const { username, password } = action.payload;
+                    const user = usersDB.find(u => u.username === username && u.password === password);
+                    
+                    if (user) {
+                        state.isAuthenticated = true;
+                        state.user = { username: user.username };
+                        state.error = null;
+                    } else {
+                        state.error = "Invalid username or password!";
+                    }
+                },
+                logout: (state) => {
+                    state.isAuthenticated = false;
+                    state.user = null;
+                    state.error = null;
+                },
+            },
+        });
+
+        const { login, logout } = authSlice.actions;
+
+        // Create store
+        const store = configureStore({
+            reducer: {
+                auth: authSlice.reducer,
+            },
+        });
+
+        function LoginComponent() {
+            const dispatch = useDispatch();
+            const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+            const user = useSelector((state) => state.auth.user);
+            const error = useSelector((state) => state.auth.error);
+
+            const [username, setUsername] = React.useState("");
+            const [password, setPassword] = React.useState("");
+
+            const handleLogin = () => {
+                dispatch(login({ username, password }));
+            };
+
+            const handleLogout = () => {
+                dispatch(logout());
+            };
+
+            return (
+                <div className="login-container">
+                    {isAuthenticated ? (
+                        <div className="welcome-message">
+                            <p>Welcome, {user.username}!</p>
+                            <button className="logout-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="login-form">
+                            <p>Please login.</p>
+                            <input 
+                                type="text" 
+                                className="input-field" 
+                                placeholder="Username" 
+                                value={username} 
+                                onChange={(e) => setUsername(e.target.value)} 
+                            />
+                            <input 
+                                type="password" 
+                                className="input-field" 
+                                placeholder="Password" 
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                            />
+                            {error && <p style={{ color: "red", fontSize: "14px" }}>{error}</p>}
+                            <button className="login-button" onClick={handleLogin}>
+                                Login
+                            </button>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(
+            <Provider store={store}>
+                <LoginComponent />
+            </Provider>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
