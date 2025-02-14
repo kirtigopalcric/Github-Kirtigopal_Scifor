@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css Flex box</title>
+</head>
+<body>
+    <style>
+        .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        height: 100vh;
+      }
+      
+        .boxitems{
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px;
+            order: 1;
+            background: #d748d7;
+            padding:30px;
+            margin: 20px;
+            color: aliceblue;
+            font-size: 20px;
+            border: 2px solid brown;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="boxitems">Blue</div>
+        <div class="boxitems">Green</div>
+        <div class="boxitems">Orange</div>
+        <div class="boxitems">Yellow</div>
+        <div class="boxitems">Pink</div>
+        <div class="boxitems">Red</div>
+    </div>
+</body>
+</html>
