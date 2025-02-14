@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+    <!-- AngularJS Controller -->
+    <div ng-controller="TestController" ng-init="message='Welcome to Angular!'">
+        <h1>{{ message }}</h1> <!-- Displaying the message using interpolation -->
+        <p ng-bind="'Hello, Angular Learner Karan Sharma !'"></p> <!-- Using ngBind to display static text -->
+    </div>
+
+    <script>
+        // Defining AngularJS Application
+        var app = angular.module('myApp', []);
+
+        // Defining a Controller
+        app.controller('TestController', function($scope) {
+            $scope.message = "Welcome to Angular!";
+        });
+    </script>
+
+</body>
+</html>
