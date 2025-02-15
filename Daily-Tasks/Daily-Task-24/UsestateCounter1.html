@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use State Counter</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        /* Center the content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #root {
+            text-align: center;
+        }
+        div{
+            background-color: rgb(247, 165, 135);
+            padding: 2rem;
+            margin: 2rem;
+            border-radius: 2rem;
+        }
+        p {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 2rem;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Extract useState hook from React library
+        const { useState } = React;
+
+        function Counter() {
+            const [count, setCount] = useState(0);
+
+            function Increment() {
+                setCount(count + 1);
+            }
+
+            function Decrement(params) {
+                setCount(count - 1);
+            }
+            return (
+                <div>
+                    <p>Count :  {count} </p>
+                    <button onClick={Increment}>Increment btn</button>
+                    <button onClick={Decrement}>Decrement btn</button>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Counter />, document.getElementById("root"));
+    </script>
+</body>
+</html>
