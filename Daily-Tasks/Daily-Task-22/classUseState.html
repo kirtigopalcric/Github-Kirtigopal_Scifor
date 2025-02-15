@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Example</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+<script type="text/babel">
+    class Car extends React.Component{
+    constructor(props){
+    super(props);
+    this.state={
+    Name: "range rover",
+    Lname:"defender",
+    Email:"bc@gmail.com",
+    BirthYear:1998
+    };
+    
+    }
+
+    Change=()=>{
+        this.setState({
+        Name: "Endevour",
+        Lname: "Ford"
+    });
+};
+    
+    render(){
+    
+    return(
+        <div>
+            <h1>I am {this.state.Name} {this.state.Lname}</h1>
+            <p>My Email is {this.state.Email} and my birthyear is {this.state.BirthYear}</p>
+            <button onClick={this.Change}>Click here</button>
+        </div>
+    );
+    }
+    }
+    const container = document.getElementById("root");
+    ReactDOM.render(<Car />, container);
+
+    
+    </script>
+    
+</body>
+</html>
