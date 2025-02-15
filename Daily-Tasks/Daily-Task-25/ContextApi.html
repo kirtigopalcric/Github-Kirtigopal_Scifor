@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Context Example</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        div{
+            text-align: center;
+            margin-top: 40px;
+            font-size: larger;
+            font-weight: bold;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { createContext, useContext } = React;
+
+        const MyContext = createContext();
+
+        function Display() {
+            const value = useContext(MyContext);
+            return <div>{value}</div>;
+        }
+
+        function App() {
+            return (
+                <MyContext.Provider value="Hello Kirti Gopal Saraswat">
+                    <Display />
+                </MyContext.Provider>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+</body>
+</html>
