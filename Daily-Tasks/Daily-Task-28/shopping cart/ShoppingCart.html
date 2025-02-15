@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store with Redux Cart</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.5/react-redux.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@reduxjs/toolkit@1.9.5/dist/redux-toolkit.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .product-list {
+            width: 48%;
+            background: #ffffff8c;
+            background-color: #c8a16e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .shopping-cart {
+           width: 48%;
+            background: #ffffff8c;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product, .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .product img, .item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+        .product-details, .item-details {
+            flex-grow: 1;
+        }
+        .product-name, .item-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .product-price, .item-price {
+      
+            margin: 10px;
+            color: black;
+        }
+        .add-button, .remove-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .remove-button {
+            background-color: #dc3545;
+        }
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { createSlice, configureStore } = window.RTK;
+      const { Provider, useSelector, useDispatch } = ReactRedux;
+
+      const products = [
+        { id: 1, name: 'Product 1', price: 1099, image: './nike1.jpeg' },
+        { id: 2, name: 'Product 2', price: 1299, image: './puma1.jpeg' },
+        { id: 3, name: 'Product 3', price: 2099, image: './puma2.jpeg' },
+        { id: 4, name: 'Product 4', price: 2499, image: './adi1.jpeg' },
+        { id: 5, name: 'Product 5', price: 3099, image: './adi2.jpeg' }
+      ];
+
+      const cartSlice = createSlice({
+        name: 'cart',
+        initialState: { items: [] },
+        reducers: {
+          addItem: (state, action) => {
+            const existingItem = state.items.find(item => item.id === action.payload.id);
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              state.items.push({ ...action.payload, quantity: 1 });
+            }
+          },
+          removeItem: (state, action) => {
+            state.items = state.items.filter(item => item.id !== action.payload);
+          }
+        }
+      });
+
+      const { addItem, removeItem } = cartSlice.actions;
+      const store = configureStore({ reducer: { cart: cartSlice.reducer } });
+
+      const ProductList = () => {
+        const dispatch = useDispatch();
+
+        return (
+          <div className="product-list">
+            <h2>Products</h2>
+            {products.map(product => (
+              <div key={product.id} className="product">
+                <img src={product.image} alt={product.name} />
+                <div className="product-details">
+                  <div className="product-name">{product.name}</div>
+                  <div className="product-price">₹{product.price.toFixed(2)}</div>
+                </div>
+                <button className="add-button" onClick={() => dispatch(addItem(product))}>Add to Cart</button>
+              </div>
+            ))}
+          </div>
+        );
+      };
+
+      const ShoppingCart = () => {
+        const items = useSelector(state => state.cart.items);
+        const dispatch = useDispatch();
+
+        const totalPrice = items.reduce((total, item) => total + item.price * item.quantity, 0);
+
+        return (
+          <div className="shopping-cart">
+            <h2>Shopping Cart</h2>
+            {items.length === 0 ? (
+              <p>Your cart is empty.</p>
+            ) : (
+              items.map(item => (
+                <div key={item.id} className="item">
+                  <img src={item.image} alt={item.name} />
+                  <div className="item-details">
+                    <div className="item-name">{item.name}</div>
+                    <div className="item-price">₹{item.price.toFixed(2)} x {item.quantity}</div>
+                  </div>
+                  <button className="remove-button" onClick={() => dispatch(removeItem(item.id))}>Remove</button>
+                </div>
+              ))
+            )}
+            <div className="total-price">Total: ₹{totalPrice.toFixed(2)}</div>
+          </div>
+        );
+      };
+
+      const App = () => (
+        <div className="container">
+          <ProductList />
+          <ShoppingCart />
+        </div>
+      );
+
+      ReactDOM.render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+        document.getElementById('root')
+      );
+    </script>
+</body>
+</html>
