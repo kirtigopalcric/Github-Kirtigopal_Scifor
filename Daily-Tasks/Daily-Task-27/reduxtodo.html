@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO App Using Redux</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.2/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.5/react-redux.min.js"></script>
+
+    <style>
+
+        /* General Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+
+
+/* Task Input */
+.task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.task-input-field {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.addBtn {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#addBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Task List */
+.task-list {
+    margin-top: 10px;
+}
+
+/* Task Item */
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+/* Delete Button */
+.removeBtn {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #ea9da5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#removeBtn:hover {
+    background-color: #a71d2a;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    color: #000000;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(156, 128, 128, 0.392);  /* Add slight shadow */
+}
+
+li:hover{
+  border: 3px solid #f62188ee;
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const { createStore } = Redux;  
+  
+
+        
+
+const initialState = {
+  todos: [], 
+};
+
+
+        const TodosReducer = (state = initialState, action) => {
+  switch (action.type) {  
+    case "addTask":
+      return { ...state, todos: [...state.todos, action.payload] };
+    case "removeTask":
+      return { ...state, todos: state.todos.filter((_, index) => index !== action.payload) };
+    default:
+      return state;
+  }
+};
+
+
+         const { useSelector, useDispatch } = ReactRedux;
+         const {useState } = React;
+
+const App = () => {
+  const [task, setTask] = useState("");
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
+
+  const addTodo = () => {
+    if (task.trim() === "") return;
+    dispatch({ type: "addTask", payload: task });
+    setTask(""); // Clear input after adding
+  };
+
+  const removeTodo = (index) => {
+    dispatch({ type: "removeTask", payload: index });
+  };
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Redux To-Do App</h1>
+      <input
+  type="text"
+  className="task-input-field"
+  value={task}
+  onChange={(e) => setTask(e.target.value)}
+  onKeyDown={(e) => e.key === "Enter" && addTodo()}  // Add task on Enter key
+  placeholder="Enter a task"
+/>
+
+
+      <button className="addBtn" onClick={addTodo}>Add Task</button>
+
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo} <button className="removeBtn" onClick={() => removeTodo(index)}>❌</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+
+
+         // Create Store
+         const store = Redux.createStore(TodosReducer);
+
+
+
+ 
+         const { Provider } = ReactRedux;
+
+         ReactDOM.render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+        document.getElementById("root")
+         );
+
+
+    </script>
+</body>
+</html>
